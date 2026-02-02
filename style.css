@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* COMMON */
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.page.active {
+  display: flex;
+}
+
+/* PAGE 1 */
+.page1 {
+  background: #f7cfd6;
+}
+
+.card {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 24px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.buttons {
+  position: relative;
+  height: 60px;
+}
+
+button {
+  border: none;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4f7b;
+  color: white;
+}
+
+#yesBtn:hover {
+  box-shadow: 0 0 20px #ff4f7b;
+  transform: scale(1.05);
+}
+
+#noBtn {
+  background: #e5e5e5;
+  position: absolute;
+  left: 180px;
+  top: 0;
+  transition: all 0.2s ease;
+}
+
+.hint {
+  font-size: 12px;
+  color: #777;
+  margin-top: 15px;
+}
+
+/* PAGE 2 */
+.page2 {
+  background: url("image3.png") center/cover no-repeat;
+  animation: bgZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.overlay {
+  background: rgba(0,0,0,0.45);
+  color: white;
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  animation: popIn 0.8s ease-out;
+  box-shadow: 0 0 40px rgba(255, 100, 150, 0.4);
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6) translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.line1 {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.line2 {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.line3 {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  top: -20px;
+  font-size: 22px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
