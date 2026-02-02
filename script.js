@@ -1,16 +1,20 @@
+// ===== ELEMENTS =====
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
 const page1 = document.querySelector(".page1");
 const page2 = document.querySelector(".page2");
 
-// store original NO position
+// ===== MUSIC =====
+const bgMusic = document.getElementById("bgMusic");
+
+// ===== STORE ORIGINAL NO POSITION =====
 let baseLeft = null;
 let baseTop = null;
 
+// ===== NO BUTTON TEXTS =====
 const noTexts = [
   "Are you sure? 😏",
-  "Pakka? 🤨",
   "Are you sure? 😏",
   "Pakka? 🤨",
   "Soch le ache se 🥺",
@@ -32,6 +36,7 @@ const noTexts = [
   "Bas kar yaar 😂",
   "Ab to YES hi bacha 😌",
   "Thak gaya hoga 🤣",
+  "Pakka? 🤨",
   "Soch le 🥺",
   "Really? 😳",
   "Dil toot raha 💔",
@@ -43,14 +48,14 @@ const noTexts = [
 
 let noCount = 0;
 
-// FLEXIBLE MOVE (safe zone)
+// ===== FLEXIBLE NO BUTTON MOVE =====
 function moveNoButton() {
   if (baseLeft === null || baseTop === null) {
     baseLeft = noBtn.offsetLeft;
     baseTop = noBtn.offsetTop;
   }
 
-  const range = 25;
+  const range = 25; // movement range (px)
 
   const dx = Math.random() * range * 2 - range;
   const dy = Math.random() * range * 2 - range;
@@ -63,21 +68,34 @@ function moveNoButton() {
   noCount++;
 }
 
+// ===== EVENTS FOR NO BUTTON =====
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("click", moveNoButton);
 
-// YES CLICK
+// ===== YES BUTTON CLICK =====
 yesBtn.addEventListener("click", () => {
+  // switch pages
   page1.classList.remove("active");
   page2.classList.add("active");
+
+  // play music
+  bgMusic.volume = 0.6;
+  bgMusic.play();
+
+  // start celebration
   startCelebration();
 });
 
-// CELEBRATION
+// ===== CELEBRATION EFFECTS =====
 function startCelebration() {
-  const hearts = ["❤️‍🔥","❤️‍🩹","💗","💕","🩷","💖","💘","💞","🤍","🫶🏻"];
+  const hearts = [
+    "❤️‍🔥","❤️‍🩹","💗","💕","🩷",
+    "💖","💘","💞","🤍","🫶🏻"
+  ];
+
   const texts = ["LOVE 💕", "YAY 💖", "FOREVER 💘", "CUTIE 🫶🏻"];
 
+  // falling hearts
   setInterval(() => {
     const h = document.createElement("div");
     h.className = "heart";
@@ -85,9 +103,11 @@ function startCelebration() {
     h.style.left = Math.random() * 100 + "vw";
     h.style.animationDuration = (2 + Math.random() * 3) + "s";
     document.body.appendChild(h);
+
     setTimeout(() => h.remove(), 5000);
   }, 120);
 
+  // floating text
   setInterval(() => {
     const t = document.createElement("div");
     t.textContent = texts[Math.floor(Math.random() * texts.length)];
@@ -99,6 +119,8 @@ function startCelebration() {
     t.style.opacity = "0.8";
     t.style.animation = "floatUp 4s linear forwards";
     document.body.appendChild(t);
+
     setTimeout(() => t.remove(), 4000);
   }, 700);
 }
+
