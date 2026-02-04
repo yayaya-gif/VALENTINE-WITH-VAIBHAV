@@ -153,3 +153,14 @@ button {
     opacity: 0;
   }
 }
+.watermark {
+  position: absolute;
+  bottom: 18px;
+  left: 22px;     /* 👈 yahan change */
+  font-size: 14px;
+  opacity: 0.4;
+  color: white;
+  font-style: italic;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
